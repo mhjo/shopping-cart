@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# 에이임팩트 프론트엔드 개발자 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 요구사항
 
-## Available Scripts
+- **상품 목록 페이지** `/products` 에 접속하면 상품 리스트를 확인 할 수 있습니다.
+  - 상품 이름, 가격이 표시됩니다.
+  - 장바구니 담기/빼기 버튼이 표시되어야 합니다.
+    - 장바구니에 담은 상품은 `빼기`
+    - 장바구니에 담지 않은 상품은 `넣기`
+  - 상품의 score기준으로 내림차순 정렬이 되어야 합니다.
+  - 상품이 **3개** 기준으로 페이지네이션처리가 되어야 합니다.
+- **장바구니 페이지** `/cart` 에 접속하면 장바구니에 담은 상품 리스트를 확인 할 수 있습니다.
 
-In the project directory, you can run:
+  - 장바구니에는 최대 3개의 상품이 담길 수 있습니다.
+  - 장바구니에 담긴 상품의 **`수량`**을 조절할 수 있습니다.
+  - 장바구니에 담긴 상품에 **`쿠폰`**을 적용할 수 있습니다.
 
-### `npm start`
+    - 만약, 5,000원짜리 상품 1개와 10,000원 짜리 상품 2개가 장바구니에 담겨있고
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+      10,000원짜리 상품에 10%짜리 쿠폰을 사용하면
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+      최종 결제 금액은 **24,000**(5,000 + 9,000 + 10,000)원이 됩니다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  - 최종 결제 금액이 하단에 표시 됩니다.
