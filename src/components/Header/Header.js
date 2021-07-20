@@ -9,9 +9,11 @@ const Header = ({ title, to, btnText }) => {
   return (
     <div className={cx("Header")}>
       <h1>{title}</h1>
-      <Link to={to}>
-        <button className={cx("Btn")}>{btnText}</button>
-      </Link>
+      {to && (
+        <Link to={to}>
+          <button className={cx("Btn")}>{btnText}</button>
+        </Link>
+      )}
     </div>
   );
 };

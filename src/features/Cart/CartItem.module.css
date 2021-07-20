@@ -1,0 +1,28 @@
+.ProductItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  padding: 10px;
+}
+
+.ProductTitle {
+  font-weight: bold;
+}
+
+.CounterBtnArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.Amount {
+  padding: 0 10px;
+}
+
+.CouponApplied {
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 300;
+}

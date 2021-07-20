@@ -3,21 +3,9 @@
   margin: 0 auto;
 }
 
-.Btn {
-  cursor: pointer;
-  padding: 10px 20px;
-  border: none;
+.Total {
+  text-align: right;
+  font-size: 1.2rem;
   font-weight: bold;
-}
-
-.ProductItem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-self: center;
-  padding: 10px;
-}
-
-.ProductTitle {
-  font-weight: bold;
+  margin-top: 10px;
 }
