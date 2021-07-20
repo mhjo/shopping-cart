@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import styles from "./CouponSelect.module.css";
+import classNames from "classnames/bind";
 import { useDispatch, useSelector } from "react-redux";
-import { applyCoupon, couponsSelector } from "../Products/productsSlice";
+import { applyCoupon, couponsSelector } from "./cartSlice";
+
+const cx = classNames.bind(styles);
 
 const CouponSelect = ({ item }) => {
   const dispatch = useDispatch();
@@ -14,7 +18,11 @@ const CouponSelect = ({ item }) => {
   };
 
   return (
-    <select value={value} onChange={onChangeCouponSelect}>
+    <select
+      className={cx("CouponSelect")}
+      value={value}
+      onChange={onChangeCouponSelect}
+    >
       <option value="">쿠폰선택</option>
       {coupons.map((coupon) => {
         return (

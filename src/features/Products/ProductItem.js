@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ProductItem.module.css";
 import classNames from "classnames/bind";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, cartSelector, removeFromCart } from "./productsSlice";
+import { addToCart, cartSelector, removeFromCart } from "../Cart/cartSlice";
 
 const cx = classNames.bind(styles);
 

@@ -3,10 +3,7 @@ import styles from "./CartItem.module.css";
 import classNames from "classnames/bind";
 import { useDispatch } from "react-redux";
 import { calculatePriceWithCoupon } from "../../utils/calcPrice";
-import {
-  decrementItemAmount,
-  incrementItemAmount,
-} from "../Products/productsSlice";
+import { decrementItemAmount, incrementItemAmount } from "./cartSlice";
 import CouponSelect from "./CouponSelect";
 
 const cx = classNames.bind(styles);
@@ -30,7 +27,7 @@ const CartItem = ({ item }) => {
     <div className={cx("ProductItem")}>
       <div>
         <div className={cx("ProductTitle")}>상품명: {item.product.title}</div>
-        <div className={cx("ProductPrice")}>가격: {item.product.price}</div>
+        <div className={cx("ProductPrice")}>가격: {item.product.price}원</div>
       </div>
 
       <div>
@@ -52,7 +49,7 @@ const CartItem = ({ item }) => {
               +
             </button>
           </div>
-          <span>가격: {calculatePriceWithCoupon(item)}</span>
+          <span>가격: {calculatePriceWithCoupon(item)}원</span>
         </div>
         {item.coupon && (
           <div className={cx("CouponApplied")}>{item.coupon.name} 적용중</div>

@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Cart.module.css";
 import classNames from "classnames/bind";
-import Header from "../../components/Header";
-import { cartSelector, totalPriceSelector } from "../Products/productsSlice";
 import { useSelector } from "react-redux";
+import Header from "../../components/Header";
+import { cartSelector, totalPriceSelector } from "./cartSlice";
 import CartItem from "./CartItem";
 
 const cx = classNames.bind(styles);
@@ -20,7 +20,7 @@ const Cart = () => {
           return <CartItem item={item} key={item.product.id} />;
         })}
       </div>
-      <div className={cx("Total")}>최종결제금액: {totalPrice}</div>
+      <div className={cx("Total")}>최종결제금액: {totalPrice}원</div>
     </div>
   );
 };
