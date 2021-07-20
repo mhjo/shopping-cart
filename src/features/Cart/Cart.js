@@ -4,17 +4,21 @@ import classNames from "classnames/bind";
 import Header from "../../components/Header";
 import {
   cartSelector,
+  couponsSelector,
   decrementItemAmount,
   incrementItemAmount,
   totalPriceSelector,
 } from "../Products/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import CouponSelect from "./CouponSelect";
+import { calculatePriceWithCoupon } from "../../utils/calcPrice";
 
 const cx = classNames.bind(styles);
 
 const Cart = () => {
   const dispatch = useDispatch();
   const carts = useSelector(cartSelector);
+  const coupons = useSelector(couponsSelector);
   const totalPrice = useSelector(totalPriceSelector);
 
   const onClickDecrementBtn = (item) => {
@@ -29,6 +33,10 @@ const Cart = () => {
     dispatch(incrementItemAmount(item.product.id));
   };
 
+  // const onChangeCouponSelect = (value, item) => {
+  //   console.log(value, item);
+  // };
+
   console.log("totalPrice", totalPrice);
 
   return (
@@ -36,6 +44,7 @@ const Cart = () => {
       <Header title="장바구니" to="/products" btnText="쇼핑하기" />
       <div className={cx("ListWrapper")}>
         {carts.map((item) => {
+          console.log("item", item);
           return (
             <div key={item.product.id} className={cx("ProductItem")}>
               <div>
@@ -63,9 +72,9 @@ const Cart = () => {
                   >
                     +
                   </button>
-                  <span>가격: {item.product.price * item.amount}</span>
+                  <span>가격: {calculatePriceWithCoupon(item)}</span>
                 </div>
-                <div>coupon</div>
+                <CouponSelect item={item} />
               </div>
             </div>
           );

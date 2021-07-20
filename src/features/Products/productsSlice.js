@@ -1,29 +1,18 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import mockProducts from "../../utils/mockProducts.json";
-
-const coupons = [
-  {
-    type: "rate",
-    name: "첫 가입 10% 쿠폰",
-    amount: 10,
-  },
-  {
-    type: "amount",
-    name: "모두에게 주는 2,000원 할인 쿠폰",
-    amount: 2000,
-  },
-];
+import mockProducts from "../../utils/mocks/mockProducts.json";
+import mockCoupons from "../../utils/mocks/mockCoupons.json";
+import { calculatePriceWithCoupon } from "../../utils/calcPrice";
 
 export const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: mockProducts,
     carts: [],
-    coupons,
+    coupons: mockCoupons,
   },
   reducers: {
     addToCart: (state, action) => {
-      state.carts.push(action.payload);
+      state.carts.push({ product: action.payload, amount: 1, coupon: null });
     },
     removeFromCart: (state, action) => {
       state.carts = state.carts.filter((c) => c.product.id !== action.payload);
@@ -40,6 +29,11 @@ export const productsSlice = createSlice({
       );
       cartItem.amount -= 1;
     },
+    applyCoupon: (state, action) => {
+      const { couponName, id } = action.payload;
+      let cartItem = state.carts.find((item) => item.product.id === id);
+      cartItem.coupon = state.coupons.find((c) => c.name === couponName);
+    },
   },
 });
 
@@ -48,14 +42,16 @@ export const {
   removeFromCart,
   incrementItemAmount,
   decrementItemAmount,
+  applyCoupon,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;
 
 export const productsSelector = (state) => state.products.products;
 export const cartSelector = (state) => state.products.carts;
+export const couponsSelector = (state) => state.products.coupons;
 export const totalPriceSelector = createSelector(cartSelector, (carts) =>
   carts.reduce((acc, item) => {
-    return acc + item.product.price * item.amount;
+    return acc + calculatePriceWithCoupon(item);
   }, 0)
 );

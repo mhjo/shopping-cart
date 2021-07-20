@@ -28,7 +28,7 @@ const Products = () => {
       alert("장바구니에는 최대 3개의 상품이 담길 수 있습니다.");
       return;
     }
-    dispatch(addToCart({ product, amount: 1, coupons: [] }));
+    dispatch(addToCart(product));
   };
 
   const onClickRemove = (product) => {
